@@ -1,0 +1,17 @@
+
+h1 {
+	margin-bottom: 20px;
+	color: #1cc322;
+}
+
+.form-inline .form-group.course-group {
+	display: none;
+}
+
+.converter-wrap {
+    border: 2px solid #a4d8a5;
+    padding: 5px 22px;
+    border-radius: 3px;
+    margin-top: 20px;
+    background: #f9f9f9;
+}

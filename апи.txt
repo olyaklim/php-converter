@@ -1,0 +1,9 @@
+ДЗ: переписати конвертор валют, так. щоб дані отримувалися через стороннє апі
+json: http://resources.finance.ua/ua/public/currency-cash.json
+xml: http://resources.finance.ua/ua/public/currency-cash.xml
+
+формат можна використовувати xml або json кому який зручно. Банк для отримання курсу - ПриватБанк
+код писати без привязки до силки, щоб при потребі можна її було змінити з мінімальним переписуванням коду
+
+
+видео  https://www.youtube.com/watch?v=89VLEz2iUn0
