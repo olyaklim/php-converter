@@ -18,23 +18,20 @@
 					<h1>Конвертер валют:</h1>
 
 					<?php 
-
+						$course_curr = 0;
 						$curr_default = 'USD';
-
 					?>
 
 					<form id="form" method="post" class="form-inline">
 
 						<div class="form-group">
 							<label class="control-label" for="count_ua">Кол-во грн:</label>
-
-							<input id="count_ua" class="form-control" type="number" name="count_ua" required  placeholder="Кол-во грн" value="100" min="1" step="1">
+							<input id="count_ua" class="form-control" type="number" name="count_ua" required  placeholder="Кол-во грн" value="1" value="1.00" min="-999999" max="999999" step="any">
 						</div>
 
 						<div class="form-group">
 
 							<label class="control-label" for="name_val">Валюта:</label>
-
 							<select id="name_val" class="form-control" required size = "1" name = "name_val">
 								<option disabled>Валюта</option>
 								<option selected value = "USD">USD</option>
@@ -44,7 +41,6 @@
 						</div>						
 
 						<button type="submit" value="send" class="btn btn-success">Рассчитать</button>
-
 						<br><br>
 
 						<div class="form-group course-group">			 
@@ -64,7 +60,6 @@
 	</div>
 
 	<script>
-
 		$('#course-curr').val('<?php echo $course_curr; ?>');
 
 		$(function() {
@@ -72,45 +67,40 @@
 				var name_val = $('#name_val').val();
 
 				$('#course-curr').val(0);
- 				$('#result').html(''); 
- 				$('.course-group').css('display','none');
+				$('#result').html(''); 
+				$('.course-group').css('display','none');
 
 			})
 		});
 
-
 		$("#form").submit(function(e) {
-
 			var name_val = $("#name_val").val();
 			var course_curr = $("#course-curr").val();
 			var count_ua = $("#count_ua").val();
 
 			$('.course-group').css('display','block');
 
-$.ajax({
-	type: "POST",
-	url: "return_course.php",
-	data:{name_val: name_val,
-		count_ua: count_ua,
-		course_curr: 2},
-		dataType: 'json',
-		error: function(data) {
-			$('#result').html('<p class="text-error" style="color:#f5345f">Ошибка чтения!</p>'); 
- },
- success: function(data){
+			$.ajax({
+				type: "POST",
+				url: "return_course.php",
+				data:{name_val: name_val,
+					count_ua: count_ua},
+					dataType: 'json',
+					error: function(data) {
+						$('#result').html('<p class="text-error" style="color:#f5345f">Ошибка чтения!</p>'); 
+					},
+					success: function(data){
+						$('#course-curr').val(data.kurs);
+						$('#result').html('<b>Результат: </b>' + data.result); 
+					}
+				});
 
- 	$('#course-curr').val(data.kurs);
- 	$('#result').html('<b>Результат: </b>' + data.result); 
+			e.preventDefault();
+		});
 
- }
-});
+	</script>
 
-e.preventDefault();
-});
-
-</script>
-
-<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 </body>
 </html>
