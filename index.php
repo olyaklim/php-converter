@@ -26,7 +26,7 @@
 
 						<div class="form-group">
 							<label class="control-label" for="count_ua">Кол-во грн:</label>
-							<input id="count_ua" class="form-control" type="number" name="count_ua" required  placeholder="Кол-во грн" value="1" value="1.00" min="-999999" max="999999" step="any">
+							<input id="count_ua" class="form-control" type="number" name="count_ua" required  placeholder="Кол-во грн" value="1" value="1.00" min="0" max="999999" step="any">
 						</div>
 
 						<div class="form-group">
